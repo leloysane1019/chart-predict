@@ -44,7 +44,7 @@ def form_post(request: Request, ticker: str = Form(...)):
             df.columns = df.columns.get_level_values(0)
         df = compute_features(df).dropna()
         X_input = df[['trend_slope', 'dis_ma5', 'dis_ma25', 'bb_width', 'price_range', 'vol_ratio']].iloc[-1:]
-        prob = model.predict_proba(X_input)[0][1]
+        prob = model.predict(X_input)[0]
         result = {
             "ticker": ticker,
             "probability": round(prob * 100, 2),
