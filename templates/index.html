@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>株価上昇予測AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container py-5">
+    <h2 class="text-center mb-4">株価上昇予測AI</h2>
+    <form method="post">
+        <div class="mb-3">
+            <input type="text" name="ticker" class="form-control" placeholder="例：7203.T" required>
+        </div>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary">予測する</button>
+        </div>
+    </form>
+
+    {% if result %}
+    <div class="mt-4 alert alert-info text-center">
+        {% if result.error %}
+            <strong>エラー：</strong> {{ result.error }}
+        {% else %}
+            <strong>{{ result.ticker }}</strong><br>
+            上昇確率：<strong>{{ result.probability }}%</strong><br>
+            {{ result.message }}
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
