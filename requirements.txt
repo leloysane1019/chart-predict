@@ -7,3 +7,4 @@ yfinance
 lightgbm
 jinja2
 joblib
+python-multipart
